@@ -156,8 +156,9 @@ namespace Aurora.Profiles
                 new Slime_Rancher.Slime_Rancher(),
                 new Terraria.Terraria(),
                 new Discord.Discord(),
-                new EliteDangerous.EliteDangerous()
-            });
+				new EliteDangerous.EliteDangerous(),
+                new Fortnite.FortniteApp()            
+			});
 
             RegisterLayerHandlers(new List<LayerHandlerEntry> {
                 new LayerHandlerEntry("Default", "Default Layer", typeof(DefaultLayerHandler)),
@@ -184,7 +185,7 @@ namespace Aurora.Profiles
                 new LayerHandlerEntry("ToggleKey", "Toggle Key Layer", typeof(ToggleKeyLayerHandler)),
                 new LayerHandlerEntry("Timer", "Timer Layer", typeof(TimerLayerHandler)),
                 new LayerHandlerEntry("Toolbar", "Toolbar Layer", typeof(ToolbarLayerHandler)),
-                new LayerHandlerEntry("BinaryCounter", "Binary Counter Layer", typeof(BinaryCounterLayerHandler))
+                new LayerHandlerEntry("BinaryCounter", "Binary Counter Layer", typeof(BinaryCounterLayerHandler)),
             }, true);
 
             RegisterLayerHandler(new LayerHandlerEntry("WrapperLights", "Wrapper Lighting Layer", typeof(WrapperLightsLayerHandler)), false);

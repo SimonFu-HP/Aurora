@@ -442,6 +442,44 @@
     <Compile Include="Profiles\RocketLeague\GSI\Nodes\Team.cs" />
     <Compile Include="Profiles\RocketLeague\Layers\RocketLeagueGoalExplosionLayerHandler.cs" />
     <Compile Include="Profiles\Osu\GSI\Enums.cs" />
+    <Compile Include="Profiles\Fortnite\Control_Fortnite.xaml.cs">
+      <DependentUpon>Control_Fortnite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\FortniteApplication.cs" />
+    <Compile Include="Profiles\Fortnite\FortniteProfile.cs" />
+    <Compile Include="Profiles\Fortnite\GameState_Fortnite.cs" />
+    <Compile Include="Profiles\Fortnite\Layers\Control_FortniteBuildingLayer.xaml.cs">
+      <DependentUpon>Control_FortniteBuildingLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\Layers\Control_FortniteExplosionLayer.xaml.cs">
+      <DependentUpon>Control_FortniteExplosionLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\Layers\Control_FortniteEnemyKilledLayer.xaml.cs">
+      <DependentUpon>Control_FortniteEnemyKilledLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\Layers\Control_FortniteGlidingLayer.xaml.cs">
+      <DependentUpon>Control_FortniteGlidingLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\Layers\Control_FortniteHarvestLayer.xaml.cs">
+      <DependentUpon>Control_FortniteHarvestLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\Layers\Control_FortnitePlayerKilledLayer.xaml.cs">
+      <DependentUpon>Control_FortnitePlayerKilledLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\Layers\Control_FortnitePoisonLayer.xaml.cs">
+      <DependentUpon>Control_FortnitePoisonLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\Layers\Control_FortniteShootingLayer.xaml.cs">
+      <DependentUpon>Control_FortniteShootingLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Fortnite\Layers\FortniteBuildingLayerHandler.cs" />
+    <Compile Include="Profiles\Fortnite\Layers\FortniteExplosionLayerHandler.cs" />
+    <Compile Include="Profiles\Fortnite\Layers\FortniteEnemyKilledLayerHandler.cs" />
+    <Compile Include="Profiles\Fortnite\Layers\FortniteGlidingLayerHandler.cs" />
+    <Compile Include="Profiles\Fortnite\Layers\FortniteHarvestLayerHandler.cs" />
+    <Compile Include="Profiles\Fortnite\Layers\FortnitePlayerKilledLayerHandler.cs" />
+    <Compile Include="Profiles\Fortnite\Layers\FortnitePoisonLayerHandler.cs" />
+    <Compile Include="Profiles\Fortnite\Layers\FortniteShootingLayerHandler.cs" />
     <Compile Include="Profiles\Skype\Control_Skype.xaml.cs">
       <DependentUpon>Control_Skype.xaml</DependentUpon>
     </Compile>
@@ -1752,6 +1790,7 @@
     <Resource Include="Resources\Slime_Rancher.png" />
     <Resource Include="Resources\elite_dangerous_256x256.png" />
     <Content Include="RazerSdkWrapper.dll" />
+    <Resource Include="Resources\Fornite.png" />
     <Resource Include="Resources\betterdiscord.png" />
     <Resource Include="Resources\terraria_512x512.png" />
     <Content Include="RGB.NET.Devices.Asus.dll">
@@ -1865,6 +1904,42 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Profiles\Discord\Control_Discord.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Profiles\Fortnite\Control_Fortnite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Profiles\Fortnite\Layers\Control_FortniteBuildingLayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Profiles\Fortnite\Layers\Control_FortniteExplosionLayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Profiles\Fortnite\Layers\Control_FortniteEnemyKilledLayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Profiles\Fortnite\Layers\Control_FortniteGlidingLayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Profiles\Fortnite\Layers\Control_FortniteHarvestLayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Profiles\Fortnite\Layers\Control_FortnitePlayerKilledLayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Profiles\Fortnite\Layers\Control_FortnitePoisonLayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Profiles\Fortnite\Layers\Control_FortniteShootingLayer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
