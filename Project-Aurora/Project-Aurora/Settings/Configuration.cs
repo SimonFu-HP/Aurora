@@ -402,6 +402,7 @@ namespace Aurora.Settings
         public bool steelseries_first_time;
         public bool dualshock_first_time;
         public bool roccat_first_time;
+        public bool show_config_ui;
 
         //General Program Settings
         public bool allow_peripheral_devices;
@@ -512,6 +513,7 @@ namespace Aurora.Settings
             razer_first_time = true;
             steelseries_first_time = true;
             dualshock_first_time = true;
+            show_config_ui = false;
 
             //General Program Settings
             allow_peripheral_devices = true;

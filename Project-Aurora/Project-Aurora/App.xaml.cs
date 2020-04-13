@@ -376,7 +376,7 @@ namespace Aurora
                 Global.logger.Info("Starting GameStateListener");
                 try
                 {
-                    Global.net_listener = new NetworkListener(9088);
+                    Global.net_listener = new NetworkListener(9089);
                     Global.net_listener.NewGameState += new NewGameStateHandler(Global.LightingStateManager.GameStateUpdate);
                     Global.net_listener.WrapperConnectionClosed += new WrapperConnectionClosedHandler(Global.LightingStateManager.ResetGameState);
                 }
@@ -404,14 +404,17 @@ namespace Aurora
 
                 Global.logger.Info("Loading ConfigUI...");
 
-                MainWindow = new ConfigUI();
-                ((ConfigUI)MainWindow).Display();
+                if(Global.Configuration.show_config_ui)
+                {
+                    MainWindow = new ConfigUI();
+                    ((ConfigUI)MainWindow).Display();
 
-                //Debug Windows on Startup
-                if (Global.Configuration.BitmapWindowOnStartUp)
-                    Window_BitmapView.Open();
-                if (Global.Configuration.HttpWindowOnStartUp)
-                    Window_GSIHttpDebug.Open();
+                    //Debug Windows on Startup
+                    if (Global.Configuration.BitmapWindowOnStartUp)
+                        Window_BitmapView.Open();
+                    if (Global.Configuration.HttpWindowOnStartUp)
+                        Window_GSIHttpDebug.Open();
+                }
             }
             else
             {
