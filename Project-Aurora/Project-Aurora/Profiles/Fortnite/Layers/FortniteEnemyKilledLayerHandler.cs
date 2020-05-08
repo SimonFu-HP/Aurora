@@ -58,10 +58,6 @@ namespace Aurora.Profiles.Fortnite.Layers {
         private ulong frameIdx = 0;
         private EffectLayer savedLayer = null;
 
-        public FortniteEnemyKilledLayerHandler() {
-            _ID = "FortniteEnemyKilledLayer";
-        }
-
         protected override UserControl CreateControl() {
             return new Control_FortniteEnemyKilledLayer();
         }

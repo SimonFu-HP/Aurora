@@ -60,11 +60,6 @@ namespace Aurora.Profiles.Fortnite.Layers {
         private static float goalEffect_keyframe = 0.0f;
         private const float goalEffect_animationTime = 3.0f;
 
-        public FortnitePlayerKilledLayerHandler() : base()
-        {
-            _ID = "FortnitePlayerKilledLayer";
-        }
-
         public override EffectLayer Render(IGameState gamestate)
         {
             previoustime = currenttime;

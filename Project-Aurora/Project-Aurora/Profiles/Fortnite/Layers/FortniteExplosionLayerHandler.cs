@@ -17,10 +17,6 @@ namespace Aurora.Profiles.Fortnite.Layers {
         private List<ExplosionParticle> particles = new List<ExplosionParticle>();
         private Random rnd = new Random();
 
-        public FortniteExplosionLayerHandler() {
-            _ID = "FortniteExplosionLayer";
-        }
-
         protected override UserControl CreateControl() {
             return new Control_FortniteExplosionLayer();
         }

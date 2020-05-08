@@ -41,11 +41,6 @@ namespace Aurora.Profiles.Fortnite.Layers {
         private Random rnd = new Random();
         private int frame = 0;
 
-        public FortniteGlidingLayerHandler() : base()
-        {
-            _ID = "FortniteGlidingLayer";
-        }
-
         protected override UserControl CreateControl()
         {
             return new Control_FortniteGlidingLayer(this);

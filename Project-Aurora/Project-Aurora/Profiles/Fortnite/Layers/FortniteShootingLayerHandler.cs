@@ -22,10 +22,6 @@ namespace Aurora.Profiles.Fortnite.Layers {
 
         private Random rnd = new Random();
 
-        public FortniteShootingLayerHandler() {
-            _ID = "FortniteShootingLayer";
-        }
-
         protected override UserControl CreateControl() {
             return new Control_FortniteShootingLayer();
         }

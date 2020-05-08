@@ -25,23 +25,14 @@ namespace Aurora.Profiles.Fortnite {
             Event = new GameEvent_Generic(),
             IconURI = "Resources/Fornite.png"
         }) {
-            var extra = new List<LayerHandlerEntry> {
-                new LayerHandlerEntry("FortniteExplosionLayer", "Fortnite exposion Layer", typeof(FortniteExplosionLayerHandler)),
-                new LayerHandlerEntry("FortniteShootingLayer", "Fortnite shooting Layer", typeof(FortniteShootingLayerHandler)),
-                new LayerHandlerEntry("FortnitePlayerKilledLayer", "Fortnite Player Killed Layer", typeof(FortnitePlayerKilledLayerHandler)),
-                new LayerHandlerEntry("FortniteHarvestLayer", "Fortnite Harvest Layer", typeof(FortniteHarvestLayerHandler)),
-                new LayerHandlerEntry("FortniteBuildingLayer", "Fortnite Building Layer", typeof(FortniteBuildingLayerHandler)),
-                new LayerHandlerEntry("FortniteGlidingLayer", "Fortnite Gliding Layer", typeof(FortniteGlidingLayerHandler)),
-                new LayerHandlerEntry("FortnitePoisonLayer", "Fortnite Poison Layer", typeof(FortnitePoisonLayerHandler)),
-                new LayerHandlerEntry("FortniteEnemyKilledLayer", "Enemy Killed Layer", typeof(FortniteEnemyKilledLayerHandler)),
-            };
-
-            Global.LightingStateManager.RegisterLayerHandlers(extra, false);
-
-            foreach (var entry in extra)
-            {
-                Config.ExtraAvailableLayers.Add(entry.Key);
-            }
+            AllowLayer<FortniteExplosionLayerHandler>();
+            AllowLayer<FortniteShootingLayerHandler>();
+            AllowLayer<FortnitePlayerKilledLayerHandler>();
+            AllowLayer<FortniteHarvestLayerHandler>();
+            AllowLayer<FortniteBuildingLayerHandler>();
+            AllowLayer<FortniteGlidingLayerHandler>();
+            AllowLayer<FortnitePoisonLayerHandler>();
+            AllowLayer<FortniteEnemyKilledLayerHandler>();
         }
 
         public static string AssemblyDirectory
