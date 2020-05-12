@@ -18,7 +18,7 @@ namespace Aurora.Profiles.Fortnite {
         public FortniteApp() : base(new LightEventConfig {
             Name = "Fortnite",
             ID = "Fortnite",
-            ProcessNames = new[] { "FortniteClient-Win64-Shipping.exe", "chrome.exe", "wmplayer.exe" },
+            ProcessNames = new[] { "FortniteClient-Win64-Shipping.exe", "wmplayer.exe" },
             ProfileType = typeof(FortniteProfile),
             OverviewControlType = typeof(Control_Fortnite),
             GameStateType = typeof(GameState_Fortnite),
