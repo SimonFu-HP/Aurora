@@ -34,29 +34,29 @@ namespace Aurora.Utils {
                 .ToDictionary(g => g.First(), g => g.Count());
 
             // Listen for new processes
-            ManagementEventWatcher startWatcher = new ManagementEventWatcher("SELECT * FROM Win32_ProcessStartTrace");
-            startWatcher.EventArrived += (sender, e) => {
-                // Get the name of the started process
-                var name = e.NewEvent.Properties["ProcessName"].Value.ToString().ToLower();
-                // Set the dictionary to be the existing value + 1 or simply 1 if it doesn't exist already.
-                runningProcesses[name] = runningProcesses.TryGetValue(name, out int i) ? i + 1 : 1;
-            };
-            startWatcher.Start();
+            //ManagementEventWatcher startWatcher = new ManagementEventWatcher("SELECT * FROM Win32_ProcessStartTrace");
+            //startWatcher.EventArrived += (sender, e) => {
+            //    // Get the name of the started process
+            //    var name = e.NewEvent.Properties["ProcessName"].Value.ToString().ToLower();
+            //    // Set the dictionary to be the existing value + 1 or simply 1 if it doesn't exist already.
+            //    runningProcesses[name] = runningProcesses.TryGetValue(name, out int i) ? i + 1 : 1;
+            //};
+            //startWatcher.Start();
 
-            // Listen for closed processes
-            ManagementEventWatcher stopWatcher = new ManagementEventWatcher("SELECT * FROM Win32_ProcessStopTrace");
-            stopWatcher.EventArrived += (sender, e) => {
-                // Get the name of the terminated process
-                var name = e.NewEvent.Properties["ProcessName"].Value.ToString().ToLower();
-                // Ensure the process exists in our dictionary
-                if (runningProcesses.TryGetValue(name, out int count)) {
-                    if (count == 1) // If there is only 1 process currently running, remove it (since that must've been the one that terminated)
-                        runningProcesses.Remove(name);
-                    else // Else, simply decrement the process count number
-                        runningProcesses[name]--;
-                }
-            };
-            stopWatcher.Start();
+            //// Listen for closed processes
+            //ManagementEventWatcher stopWatcher = new ManagementEventWatcher("SELECT * FROM Win32_ProcessStopTrace");
+            //stopWatcher.EventArrived += (sender, e) => {
+            //    // Get the name of the terminated process
+            //    var name = e.NewEvent.Properties["ProcessName"].Value.ToString().ToLower();
+            //    // Ensure the process exists in our dictionary
+            //    if (runningProcesses.TryGetValue(name, out int count)) {
+            //        if (count == 1) // If there is only 1 process currently running, remove it (since that must've been the one that terminated)
+            //            runningProcesses.Remove(name);
+            //        else // Else, simply decrement the process count number
+            //            runningProcesses[name]--;
+            //    }
+            //};
+            //stopWatcher.Start();
         }
 
         /// <summary>
