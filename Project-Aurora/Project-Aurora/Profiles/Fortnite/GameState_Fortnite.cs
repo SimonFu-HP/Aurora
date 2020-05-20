@@ -3,7 +3,7 @@ using Aurora.Profiles;
 
 namespace Aurora.Profiles.Fortnite{
 
-    public class GameState_Fortnite : GameState<GameState_Fortnite> {
+    public class GameState_Fortnite : GameState{
 
         private ProviderNode provider;
         public ProviderNode Provider => provider ?? (provider = new ProviderNode(_ParsedData["provider"]?.ToString() ?? ""));
@@ -13,10 +13,10 @@ namespace Aurora.Profiles.Fortnite{
 
         public GameState_Fortnite() : base() { }
         public GameState_Fortnite(string JSONstring) : base(JSONstring) { }
-        public GameState_Fortnite(IGameState other) : base(other) { }
     }
 
-    public class ProviderNode : Node<ProviderNode> {
+    public class ProviderNode : AutoJsonNode<ProviderNode>
+    {
 
         public string Name;
         public int AppID;
@@ -27,7 +27,7 @@ namespace Aurora.Profiles.Fortnite{
         }
     }
 
-    public class GameNode : Node<GameNode> {
+    public class GameNode : AutoJsonNode<GameNode> {
 
         public string Status;
 

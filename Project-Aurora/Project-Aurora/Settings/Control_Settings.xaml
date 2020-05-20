@@ -313,6 +313,11 @@
                                     <Button x:Name="wrapper_install_lightfx_64" Content="Install Aurora Wrapper Patch for LightFX (64 bit)" HorizontalAlignment="Left" Margin="0,1,0,1" VerticalAlignment="Top" Click="wrapper_install_lightfx_64_Click"/>
                                 </StackPanel>
                             </TabItem>
+                            <TabItem Header="Asus">
+                                <StackPanel Orientation="Vertical" Margin="5">
+                                    <Button x:Name="wrapper_asus_configure_devices" Content="Configure Peripheral Devices" HorizontalAlignment="Left" Margin="0,1,0,1" VerticalAlignment="Top" Click="wrapper_asus_configure_devices_Click"/>
+                                </StackPanel>
+                            </TabItem>
                         </TabControl>
                     </Grid>
                 </Grid>
@@ -427,6 +432,13 @@
                             Margin="0,50,0,0"
                             Width="150"
                             Height="30"
+                        />
+                        <Button
+                            x:Name="btnDumpSensors"
+                            Margin="0,10,0,0"
+                            Width="150"
+                            Height="30"
+                            Content="Dump hardware sensors" Click="btnDumpSensors_Click"
                         />
                     </StackPanel>
                 </Grid>
