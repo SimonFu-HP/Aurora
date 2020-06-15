@@ -57,7 +57,7 @@ namespace Aurora.Utils
                 lines.Add("-----");
                 lines.Add(hw.Name);
                 lines.Add("Sensors:");
-                foreach (var sensor in hw.Sensors.OrderBy(s => s.SensorType))
+                foreach (var sensor in hw.Sensors.OrderBy(s => s.Identifier))
                 {
                     lines.Add($"Name: {sensor.Name}, Id: {sensor.Identifier}, Type: {sensor.SensorType}");
                 }
@@ -77,7 +77,7 @@ namespace Aurora.Utils
 
         private static ISensor FindSensor(this IHardware hardware, string identifier)
         {
-            var result = Array.Find(hardware.Sensors, s => s.Identifier.ToString().Contains(identifier));
+            var result = hardware.Sensors.OrderBy(s => s.Identifier).FirstOrDefault(s => s.Identifier.ToString().Contains(identifier));
             if (result is null)
             {
                 Global.logger.Error(
@@ -88,7 +88,7 @@ namespace Aurora.Utils
 
         private static ISensor FindSensor(this IHardware hardware, SensorType type)
         {
-            var result = Array.Find(hardware.Sensors, s => s.SensorType == type);
+            var result = hardware.Sensors.OrderBy(s => s.Identifier).FirstOrDefault(s => s.SensorType == type);
             if (result is null)
             {
                 Global.logger.Error(
@@ -99,14 +99,17 @@ namespace Aurora.Utils
 
         public abstract class HardwareUpdater
         {
+            private const int MAX_QUEUE = 8;
             protected IHardware hw;
             protected bool inUse;
 
             private readonly Timer _useTimer;
             private readonly Timer _updateTimer;
+            private readonly Queue<float> _values;
 
             protected HardwareUpdater()
             {
+                _values = new Queue<float>(MAX_QUEUE);
                 _useTimer = new Timer(5000);
                 _useTimer.Elapsed += (a, b) =>
                 {
@@ -119,7 +122,9 @@ namespace Aurora.Utils
                 _updateTimer.Elapsed += (a, b) =>
                 {
                     if (inUse)
-                        hw.Update();
+                        hw?.Update();
+                    if (_updateTimer.Interval != Global.Configuration.HardwareMonitorUpdateRate)
+                        _updateTimer.Interval = Global.Configuration.HardwareMonitorUpdateRate;
                 };
                 _updateTimer.Start();
             }
@@ -129,14 +134,14 @@ namespace Aurora.Utils
                 inUse = true;
                 _useTimer.Stop();
                 _useTimer.Start();
-                return sensor?.Value ?? 0;
-            }
 
-            public void SetUpdateTimer(int interval)
-            {
-                _updateTimer.Interval = interval;
-                _updateTimer.Stop();
-                _updateTimer.Start();
+                if (_values.Count == MAX_QUEUE)
+                    _values.Dequeue();
+                _values.Enqueue(sensor?.Value ?? 0);
+
+                return Global.Configuration.HardwareMonitorUseAverageValues ? 
+                    _values.Average() : 
+                    sensor?.Value ?? 0;
             }
         }
 

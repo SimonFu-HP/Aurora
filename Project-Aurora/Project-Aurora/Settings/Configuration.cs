@@ -296,6 +296,8 @@ namespace Aurora.Settings
         //OMEN range 1300-1399
         [Description("OMEN Sequencer")]
         OMEN_Sequencer = 1300,
+        [Description("OMEN Four Zone")]
+        OMEN_Four_Zone = 1301,
     }
 
     public enum PreferredKeyboardLocalization
@@ -512,7 +514,8 @@ namespace Aurora.Settings
         public float idle_frequency;
 
         //Hardware Monitor
-        public int HardwareMonitorUpdateRate;
+        public int HardwareMonitorUpdateRate { get; set; } = 500;
+        public bool HardwareMonitorUseAverageValues { get; set; } = true;
 
         public VariableRegistry VarRegistry;
 
@@ -529,6 +532,9 @@ namespace Aurora.Settings
         public ObservableConcurrentDictionary<string, IEvaluatable> EvaluatableTemplates { get; set; } = new ObservableConcurrentDictionary<string, IEvaluatable>();
 
         public List<string> ProfileOrder { get; set; } = new List<string>();
+
+        public string GSIAudioRenderDevice { get; set; } = AudioDeviceProxy.DEFAULT_DEVICE_ID;
+        public string GSIAudioCaptureDevice { get; set; } = AudioDeviceProxy.DEFAULT_DEVICE_ID;
 
         public Configuration()
         {
@@ -591,8 +597,6 @@ namespace Aurora.Settings
             idle_effect_secondary_color = Color.FromArgb(0, 0, 0);
             idle_amount = 5;
             idle_frequency = 2.5f;
-
-            HardwareMonitorUpdateRate = 200;
 
             //Debug
             BitmapDebugTopMost = false;
